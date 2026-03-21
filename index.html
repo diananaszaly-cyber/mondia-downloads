@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Mondia – Digitale Vorlagen & KI-Setups. Sofort nutzbare Dateien oder einmaliges KI-Setup ohne Tool-Chaos." />
+  <title>Mondia – Digitale Vorlagen & KI-Setups</title>
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 20px 60px rgba(0,0,0,.40);
+      --radius: 18px;
+      --radius2: 26px;
+      --maxw: 1120px;
+      --accent1:#5564ff;
+      --accent2:#4a52d9;
+      --accent3:#6577ff;
+      --ok:#5CFFA6;
+      --warn:#FFD56A;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1500px 900px at 15% 5%, rgba(85,100,255,.14), transparent 65%),
+        radial-gradient(1200px 800px at 85% 20%, rgba(74,82,217,.12), transparent 60%),
+        radial-gradient(1000px 600px at 50% 95%, rgba(85,100,255,.08), transparent 65%),
+        linear-gradient(180deg, #050810, var(--bg));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+    .nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7,10,20,.75), rgba(7,10,20,.35));
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      height:72px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+    }
+    .brand img{
+      width:140px; height:auto; display:block;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
+    }
+    .nav-links{
+      display:flex; gap:16px; align-items:center;
+    }
+    .nav-links a{
+      text-decoration:none;
+      font-size:14px;
+      color:var(--muted);
+      padding:10px 10px;
+      border-radius:12px;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav-cta{
+      display:flex; gap:10px; align-items:center;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, rgba(106,167,255,.95), rgba(139,92,255,.95));
+      box-shadow: 0 16px 50px rgba(106,167,255,.25);
+    }
+    .btn.primary:hover{filter:brightness(1.02)}
+    .btn.ghost{
+      background: transparent;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:none;
+    }
+
+    header.hero{
+      padding:56px 0 34px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:28px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(1200px 500px at 10% 10%, rgba(106,167,255,.20), transparent 55%),
+                  radial-gradient(1000px 500px at 90% 0%, rgba(139,92,255,.22), transparent 55%);
+      pointer-events:none;
+      z-index:0;
+    }
+    .hero-card > *{position:relative; z-index:1}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width:60ch;
+    }
+    .hero-actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin:18px 0 10px;
+    }
+
+    section{padding:26px 0}
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.01em;
+    }
+    .sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+      max-width:78ch;
+    }
+    .grid-3{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;
+    }
+    .product{
+      display:flex; flex-direction:column; gap:12px;
+      padding:22px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.11);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      min-height: 200px;
+      position:relative;
+      overflow:hidden;
+      text-decoration:none;
+      color:var(--text);
+      cursor:pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .product:hover{
+      transform: translateY(-4px);
+      border-color: rgba(106,167,255,.45);
+      box-shadow: 0 20px 50px rgba(106,167,255,.15), 0 8px 20px rgba(0,0,0,.3);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+    }
+    .product:hover .product-arrow{
+      opacity:1; transform: translateX(0);
+    }
+    .product-top{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      width:fit-content;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+    .price{
+      font-weight:800;
+      font-size:22px;
+      letter-spacing:-.01em;
+      color:rgba(106,167,255,.95);
+      white-space:nowrap;
+    }
+    .product h3{margin:0 0 4px; font-size:17px;}
+    .product .meta{color:var(--muted); font-size:13px; line-height:1.5}
+    .product-bottom{
+      margin-top:auto;
+      display:flex; gap:10px;
+      padding-top:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .btn.small{padding:10px 12px; border-radius:12px; font-size:13px}
+    .btn.disabled{opacity:.55; pointer-events:none;}
+
+    .card{
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.11);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+    }
+    .card h3{margin:2px 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:14px 14px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:700;
+      color:rgba(255,255,255,.88);
+      list-style:none;
+    }
+    details summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--muted); font-size:14px; line-height:1.55}
+
+    footer{
+      padding:30px 0 34px;
+      border-top:1px solid var(--line);
+      margin-top:22px;
+      color:var(--muted2);
+      font-size:13px;
+    }
+    .footer-grid{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;
+    }
+    .footer-grid a{color:var(--muted); text-decoration:none}
+    .footer-grid a:hover{color:var(--text)}
+    .smallprint{color:var(--muted2); max-width:80ch; line-height:1.55}
+
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns: repeat(2, 1fr)}
+      .nav-links{display:none}
+    }
+    @media (max-width: 620px){
+      .grid-3{grid-template-columns:1fr}
+    }
+    @media (max-width: 520px){
+      .btn{width:100%}
+      .nav-cta{width:100%}
+      .nav-inner{gap:12px}
+      .brand img{width:120px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Mondia Start">
+          <img src="assets/logo.png" alt="Mondia Logo" />
+        </a>
+
+        <div class="nav-links">
+          <a href="#downloads">Downloads</a>
+          <a href="#setup">KI-Setup</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav-cta">
+          <a class="btn ghost" href="#downloads">Downloads ansehen</a>
+          <a class="btn primary" href="#setup">KI-Setup anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h1>Digitale Vorlagen, Office-Dateien & KI-Setups,<br/>die dir Zeit sparen – ohne Tool-Chaos.</h1>
+          <p class="lead">
+            Mondia liefert dir fertige Downloads (Templates, Guides, Prompt-Packs) <strong>oder individuell erstellte Office-Dateien</strong>
+            (Excel/Word/PowerPoint/PDF) – auf Wunsch ergänzt durch ein <strong>einmaliges KI-Setup</strong> inklusive Ordnerstruktur,
+            Prompt-Bibliothek und Vorlagen, damit du im Alltag schneller arbeitest.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#downloads">Downloads ansehen</a>
+            <a class="btn ghost" href="#setup">KI-Setup anfragen (2 Min)</a>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <h3>In einem Satz</h3>
+            <p>Du bekommst <strong>sofort nutzbare Dateien</strong> oder ein <strong>einmaliges Setup</strong> – klar, strukturiert, ohne Dauerstress.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quick Options</h3>
+          <p style="margin-bottom:12px">Wähle den schnellsten Weg für dich:</p>
+          <div style="display:grid; gap:10px">
+            <a class="btn primary" href="#downloads">→ Downloads / Vorlagen</a>
+            <a class="btn ghost" href="#setup">→ KI-Setup (einmalig)</a>
+            <a class="btn ghost" href="#contact">→ Custom Datei anfragen</a>
+          </div>
+          <p style="margin-top:12px;color:rgba(255,255,255,.55);font-size:13px;line-height:1.55">
+            Tipp: Wenn du noch unsicher bist, starte mit <strong>Mini-Audit</strong> (79 €) – du bekommst eine Datei + Prompts + Video.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="downloads">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Downloads</h2>
+          <p class="sub">Sofort nutzbare Dateien. Klicke auf „Vorschau" zum Reinschauen oder auf „Kaufen" zur Bestellung via PayPal.</p>
+        </div>
+        <a class="btn ghost" href="#downloads">Alle Downloads ansehen</a>
+      </div>
+
+      <div class="grid-3">
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Starter</span>
+            <div class="price">9 €</div>
+          </div>
+          <h3>KI-Spickzettel</h3>
+          <div class="meta">In 20 Min KI meistern – 5 Prompt-Regeln + 10 Sofort-Prompts</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/KI_Spickzettel_MONDIA_v2_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/9" target="_blank">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Bestseller</span>
+            <div class="price">19 €</div>
+          </div>
+          <h3>Prompt-Bibliothek</h3>
+          <div class="meta">100 universelle Prompts in 10 Kategorien – Copy & Paste</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/Prompt_Bibliothek_MONDIA_v2_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/19" target="_blank">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Bildung</span>
+            <div class="price">14 €</div>
+          </div>
+          <h3>KI-Assistent für Lehrer</h3>
+          <div class="meta">30 Prompts + Custom GPT – Unterricht, Elternbriefe, Förderung</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/KI_Assistent_Lehrer_MONDIA_3_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/14" target="_blank">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Bildung</span>
+            <div class="price">9 €</div>
+          </div>
+          <h3>KI-Assistent für Schüler</h3>
+          <div class="meta">Schlauer lernen – Quizfragen, Lernpläne, Prüfungsvorbereitung</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/KI_Assistent_Schueler_MONDIA_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/9" target="_blank">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Bildung</span>
+            <div class="price">14 €</div>
+          </div>
+          <h3>KI-Assistent für Studierende</h3>
+          <div class="meta">Hausarbeiten, Literatur, Prüfungen – effektiver studieren mit KI</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/KI_Assistent_Studierende_MONDIA_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/14" target="_blank">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Business</span>
+            <div class="price">24 €</div>
+          </div>
+          <h3>KI-Werkzeugkasten für Selbstständige</h3>
+          <div class="meta">30 Prompts + 5 Workflows – Angebote, Kunden, Content, Orga</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/KI_Werkzeugkasten_Selbststaendige_MONDIA_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/24" target="_blank">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <span class="badge">PDF · Content</span>
+            <div class="price">14 €</div>
+          </div>
+          <h3>KI-Assistent für Social Media</h3>
+          <div class="meta">20 Prompts für Instagram, TikTok, LinkedIn, Facebook & X</div>
+          <div class="product-bottom">
+            <a class="btn small ghost" href="products/KI-Assistent_fuer_Social_Media_MONDIA_1_preview.pdf" target="_blank">Vorschau</a>
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/14" target="_blank">Kaufen</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:20px">
+        <div class="product" style="border-color:rgba(92,255,166,.25); background:linear-gradient(180deg, rgba(92,255,166,.08), rgba(255,255,255,.03))">
+          <div class="product-top">
+            <span class="badge" style="border-color:rgba(92,255,166,.3); color:var(--ok)">3er-Pack</span>
+            <div class="price" style="color:var(--ok)">29 €</div>
+          </div>
+          <h3>3 Downloads nach Wahl</h3>
+          <div class="meta">Wähle 3 beliebige Produkte aus und spare. <span style="text-decoration:line-through; opacity:.6">ab 37 €</span></div>
+          <div class="product-bottom">
+            <a class="btn small primary" href="mailto:diana.naszaly@outlook.com?subject=3er-Pack%20Bestellung&body=Hallo%20Diana,%0A%0Aich%20m%C3%B6chte%20das%203er-Pack%20bestellen.%0AMeine%20Auswahl:%0A1.%20%0A2.%20%0A3.%20%0A%0AVielen%20Dank!" target="_blank" style="background:linear-gradient(135deg, rgba(92,255,166,.9), rgba(106,167,255,.9))">Auswahl per E-Mail</a>
+          </div>
+        </div>
+
+        <div class="product" style="border-color:rgba(255,213,106,.25); background:linear-gradient(180deg, rgba(255,213,106,.08), rgba(255,255,255,.03))">
+          <div class="product-top">
+            <span class="badge" style="border-color:rgba(255,213,106,.3); color:var(--warn)">Komplett-Paket</span>
+            <div class="price" style="color:var(--warn)">69 €</div>
+          </div>
+          <h3>Alle 7 Downloads</h3>
+          <div class="meta">Das volle Programm – alle Produkte zum Sparpreis. <span style="text-decoration:line-through; opacity:.6">103 €</span></div>
+          <div class="product-bottom">
+            <a class="btn small primary" href="https://paypal.me/diananaszaly/69" target="_blank" style="background:linear-gradient(135deg, rgba(255,213,106,.9), rgba(255,160,60,.9)); color:#1a1a2e">Kaufen</a>
+          </div>
+        </div>
+
+        <div class="product" style="border-color:rgba(139,92,255,.25); background:linear-gradient(180deg, rgba(139,92,255,.08), rgba(255,255,255,.03))">
+          <div class="product-top">
+            <span class="badge" style="border-color:rgba(139,92,255,.3); color:rgba(180,150,255,1)">Click & Mix</span>
+          </div>
+          <h3>Eigenes Paket zusammenstellen</h3>
+          <div class="meta">Ab 3 Produkten sparst du 15%. Schreib mir einfach welche du willst.</div>
+          <div class="product-bottom">
+            <a class="btn small primary" href="mailto:diana.naszaly@outlook.com?subject=Click%20%26%20Mix%20Bestellung&body=Hallo%20Diana,%0A%0Aich%20m%C3%B6chte%20folgende%20Produkte%20bestellen:%0A-%20%0A-%20%0A-%20%0A%0AVielen%20Dank!" target="_blank" style="background:linear-gradient(135deg, rgba(139,92,255,.9), rgba(106,167,255,.9))">Per E-Mail anfragen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="setup">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>KI-Setup (einmal einrichten, fertig)</h2>
+          <p class="sub">Du bekommst ein klar strukturiertes Setup + Übergabe. Optionaler Support ist separat – kein Dauerstress.</p>
+        </div>
+        <a class="btn primary" href="#setup">KI-Setup anfragen</a>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Mini-Audit (asynchron) – 79 €</h3>
+          <p>Du schickst Material → du bekommst eine Datei + Prompts + 10-Min Video.</p>
+        </div>
+        <div class="card">
+          <h3>KI-Setup Standard – 199 €</h3>
+          <p>90–120 Min live. Prompt-Bibliothek + Ordnerstruktur + 3 Vorlagen + Mini-Guide.</p>
+        </div>
+        <div class="card">
+          <h3>KI-Setup Pro – 299 €</h3>
+          <p>2–3 Std live. Standard + Workflow-Sheet + Extra Use-Case.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Optionaler Support (klar getrennt)</h3>
+        <p>30-Min Check-in: <strong>39 €</strong> · Support-Woche (1h): <strong>49 €</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>FAQ</h2>
+          <p class="sub">Kurz und klar.</p>
+        </div>
+      </div>
+
+      <div style="display:grid; gap:12px">
+        <details open>
+          <summary>Brauche ich ein Tool-Abo?</summary>
+          <p>Nein. Das Setup ist so ausgelegt, dass es auch mit Free-Tools funktioniert.</p>
+        </details>
+
+        <details>
+          <summary>Für welche Branchen ist Mondia?</summary>
+          <p>Branchenoffen. Wir arbeiten use-case-basiert (Anfragen, Angebote, Content, Organisation).</p>
+        </details>
+
+        <details>
+          <summary>Wie läuft Zahlung/Delivery?</summary>
+          <p>Du kannst mit Payment-Links starten (z. B. PayPal/Stripe/Gumroad). Lieferung per Download-Link oder Drive-Ordner.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong style="color:rgba(255,255,255,.88)">Mondia</strong><br/>
+          <span class="smallprint">Digitale Vorlagen & KI-Setups für mehr Klarheit und Tempo im Alltag.</span>
+        </div>
+
+        <div style="display:grid; gap:8px">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+</body>
+</html>

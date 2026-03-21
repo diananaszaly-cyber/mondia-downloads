@@ -1,0 +1,11 @@
+# Volle PDFs nicht hochladen (nur Previews)
+products/*.pdf
+!products/*_preview.pdf
+
+# ZIP nicht hochladen
+*.zip
+
+# Alte Ordner
+products/01_KI-Spickzettel_v1/
+products/02_Prompt-Pack_v1/
+products/03_Budget-Orga-Template_v1/
