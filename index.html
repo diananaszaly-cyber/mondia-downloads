@@ -89,9 +89,11 @@
       text-decoration:none;
       font-weight:600;
       font-size:14px;
+      font-family:inherit;
       box-shadow: 0 10px 30px rgba(0,0,0,.18);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       white-space:nowrap;
+      cursor:pointer;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
     .btn.primary{
@@ -281,6 +283,53 @@
       .nav-inner{gap:12px}
       .brand img{width:120px}
     }
+
+    /* PDF Modal */
+    .pdf-modal{
+      display:none;
+      position:fixed; inset:0; z-index:200;
+      background: rgba(5,8,16,.85);
+      backdrop-filter: blur(10px);
+      align-items:center; justify-content:center;
+      padding:20px;
+    }
+    .pdf-modal.open{ display:flex; }
+    .pdf-modal-box{
+      background: #0d1226;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:20px;
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+      width:100%; max-width:780px;
+      height:min(86vh, 960px);
+      display:flex; flex-direction:column;
+      overflow:hidden;
+    }
+    .pdf-modal-header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      flex-shrink:0;
+    }
+    .pdf-modal-title{
+      font-weight:700; font-size:15px;
+      color:rgba(255,255,255,.9);
+    }
+    .pdf-modal-close{
+      cursor:pointer;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);
+      width:34px; height:34px;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px;
+      line-height:1;
+      transition:.15s ease;
+    }
+    .pdf-modal-close:hover{ background:rgba(255,255,255,.15); }
+    .pdf-modal iframe{
+      flex:1; width:100%; border:none;
+    }
   </style>
 </head>
 
@@ -357,91 +406,91 @@
       <div class="grid-3">
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Starter</span>
+            <span class="badge">PDF · 2 Seiten · Starter</span>
             <div class="price">9 €</div>
           </div>
           <h3>KI-Spickzettel</h3>
           <div class="meta">In 20 Min KI meistern – 5 Prompt-Regeln + 10 Sofort-Prompts</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/KI_Spickzettel_MONDIA_v2_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/KI_Spickzettel_MONDIA_v2_preview.pdf','KI-Spickzettel')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/9" target="_blank">Kaufen</a>
           </div>
         </div>
 
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Bestseller</span>
+            <span class="badge">PDF · 7 Seiten · Bestseller</span>
             <div class="price">19 €</div>
           </div>
           <h3>Prompt-Bibliothek</h3>
           <div class="meta">100 universelle Prompts in 10 Kategorien – Copy & Paste</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/Prompt_Bibliothek_MONDIA_v2_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/Prompt_Bibliothek_MONDIA_v2_preview.pdf','Prompt-Bibliothek')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/19" target="_blank">Kaufen</a>
           </div>
         </div>
 
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Bildung</span>
+            <span class="badge">PDF · 6 Seiten · Bildung</span>
             <div class="price">14 €</div>
           </div>
           <h3>KI-Assistent für Lehrer</h3>
           <div class="meta">30 Prompts + Custom GPT – Unterricht, Elternbriefe, Förderung</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/KI_Assistent_Lehrer_MONDIA_3_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Lehrer_MONDIA_3_preview.pdf','KI-Assistent für Lehrer')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/14" target="_blank">Kaufen</a>
           </div>
         </div>
 
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Bildung</span>
+            <span class="badge">PDF · 4 Seiten · Bildung</span>
             <div class="price">9 €</div>
           </div>
           <h3>KI-Assistent für Schüler</h3>
           <div class="meta">Schlauer lernen – Quizfragen, Lernpläne, Prüfungsvorbereitung</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/KI_Assistent_Schueler_MONDIA_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Schueler_MONDIA_preview.pdf','KI-Assistent für Schüler')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/9" target="_blank">Kaufen</a>
           </div>
         </div>
 
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Bildung</span>
+            <span class="badge">PDF · 5 Seiten · Bildung</span>
             <div class="price">14 €</div>
           </div>
           <h3>KI-Assistent für Studierende</h3>
           <div class="meta">Hausarbeiten, Literatur, Prüfungen – effektiver studieren mit KI</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/KI_Assistent_Studierende_MONDIA_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Studierende_MONDIA_preview.pdf','KI-Assistent für Studierende')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/14" target="_blank">Kaufen</a>
           </div>
         </div>
 
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Business</span>
+            <span class="badge">PDF · 6 Seiten · Business</span>
             <div class="price">24 €</div>
           </div>
           <h3>KI-Werkzeugkasten für Selbstständige</h3>
           <div class="meta">30 Prompts + 5 Workflows – Angebote, Kunden, Content, Orga</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/KI_Werkzeugkasten_Selbststaendige_MONDIA_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/KI_Werkzeugkasten_Selbststaendige_MONDIA_preview.pdf','KI-Werkzeugkasten für Selbstständige')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/24" target="_blank">Kaufen</a>
           </div>
         </div>
 
         <div class="product">
           <div class="product-top">
-            <span class="badge">PDF · Content</span>
+            <span class="badge">PDF · 3 Seiten · Content</span>
             <div class="price">14 €</div>
           </div>
           <h3>KI-Assistent für Social Media</h3>
           <div class="meta">20 Prompts für Instagram, TikTok, LinkedIn, Facebook & X</div>
           <div class="product-bottom">
-            <a class="btn small ghost" href="products/KI-Assistent_fuer_Social_Media_MONDIA_1_preview.pdf" target="_blank">Vorschau</a>
+            <button class="btn small ghost" onclick="openPreview('products/KI-Assistent_fuer_Social_Media_MONDIA_1_preview.pdf','KI-Assistent für Social Media')">Vorschau</button>
             <a class="btn small primary" href="https://paypal.me/diananaszaly/14" target="_blank">Kaufen</a>
           </div>
         </div>
@@ -546,6 +595,17 @@
     </div>
   </section>
 
+  <!-- PDF Preview Modal -->
+  <div class="pdf-modal" id="pdfModal" onclick="closePreview(event)">
+    <div class="pdf-modal-box">
+      <div class="pdf-modal-header">
+        <span class="pdf-modal-title" id="pdfModalTitle">Vorschau</span>
+        <div class="pdf-modal-close" onclick="closePreview()">&#x2715;</div>
+      </div>
+      <iframe id="pdfModalFrame" src="" title="PDF Vorschau"></iframe>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -562,5 +622,22 @@
 
     </div>
   </footer>
+  <script>
+    function openPreview(src, title) {
+      document.getElementById('pdfModalFrame').src = src;
+      document.getElementById('pdfModalTitle').textContent = title + ' – Vorschau';
+      document.getElementById('pdfModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePreview(e) {
+      if (e && e.target !== document.getElementById('pdfModal') && !e.target.classList.contains('pdf-modal-close')) return;
+      document.getElementById('pdfModal').classList.remove('open');
+      document.getElementById('pdfModalFrame').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePreview();
+    });
+  </script>
 </body>
 </html>
