@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none">
+  <!-- Left mountain (lightest) -->
+  <polygon points="30,130 75,40 120,130" fill="#C8DCC5"/>
+  <!-- Center mountain (medium) -->
+  <polygon points="55,130 100,25 145,130" fill="#A8C5A0"/>
+  <!-- Right mountain (darkest / primary) -->
+  <polygon points="80,130 125,35 170,130" fill="#7A9E7E"/>
+</svg>
