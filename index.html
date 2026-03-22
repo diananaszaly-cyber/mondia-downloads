@@ -313,13 +313,52 @@
     }
 
     /* ── Bundle cards ── */
-    .bundle-highlight{
-      border-color:rgba(122,158,126,.22);
-      background:rgba(122,158,126,.06);
+    .bundle-green{
+      border-color:rgba(92,255,166,.20);
+      background:linear-gradient(180deg, rgba(92,255,166,.07), rgba(92,255,166,.02));
     }
-    .bundle-highlight:hover{
-      background:rgba(122,158,126,.12);
-      box-shadow:0 24px 60px rgba(122,158,126,.14);
+    .bundle-green:hover{
+      border-color:rgba(92,255,166,.40);
+      background:linear-gradient(180deg, rgba(92,255,166,.12), rgba(92,255,166,.04));
+      box-shadow:0 24px 60px rgba(92,255,166,.10);
+    }
+    .bundle-green .badge{background:rgba(92,255,166,.15); color:#5CFFA6}
+    .bundle-green .price{color:#5CFFA6}
+    .bundle-green .btn.primary{
+      background:linear-gradient(135deg, #5CFFA6, #6AB7FF);
+      color:#0a1210;
+    }
+
+    .bundle-gold{
+      border-color:rgba(255,213,106,.20);
+      background:linear-gradient(180deg, rgba(255,213,106,.07), rgba(255,213,106,.02));
+    }
+    .bundle-gold:hover{
+      border-color:rgba(255,213,106,.40);
+      background:linear-gradient(180deg, rgba(255,213,106,.12), rgba(255,213,106,.04));
+      box-shadow:0 24px 60px rgba(255,213,106,.10);
+    }
+    .bundle-gold .badge{background:rgba(255,213,106,.15); color:#FFD56A}
+    .bundle-gold .price{color:#FFD56A}
+    .bundle-gold .btn.primary{
+      background:linear-gradient(135deg, #FFD56A, #FFA03C);
+      color:#1a1a1a;
+    }
+
+    .bundle-purple{
+      border-color:rgba(139,92,255,.20);
+      background:linear-gradient(180deg, rgba(139,92,255,.07), rgba(139,92,255,.02));
+    }
+    .bundle-purple:hover{
+      border-color:rgba(139,92,255,.40);
+      background:linear-gradient(180deg, rgba(139,92,255,.12), rgba(139,92,255,.04));
+      box-shadow:0 24px 60px rgba(139,92,255,.10);
+    }
+    .bundle-purple .badge{background:rgba(139,92,255,.15); color:#B496FF}
+    .bundle-purple .price{color:#B496FF}
+    .bundle-purple .btn.primary{
+      background:linear-gradient(135deg, #8B5CFF, #6AB7FF);
+      color:#fff;
     }
 
     /* ── Glass cards ── */
@@ -632,9 +671,9 @@
 
       <!-- Bundles -->
       <div class="grid-3" style="margin-top:20px">
-        <div class="product bundle-highlight reveal">
+        <div class="product bundle-green reveal">
           <div class="product-top">
-            <span class="badge" style="background:rgba(122,158,126,.18)">3er-Pack</span>
+            <span class="badge">3er-Pack</span>
             <div class="price">29 €</div>
           </div>
           <h3>3 Downloads nach Wahl</h3>
@@ -644,9 +683,9 @@
           </div>
         </div>
 
-        <div class="product bundle-highlight reveal">
+        <div class="product bundle-gold reveal">
           <div class="product-top">
-            <span class="badge" style="background:rgba(122,158,126,.18)">Komplett-Paket</span>
+            <span class="badge">Komplett-Paket</span>
             <div class="price">69 €</div>
           </div>
           <h3>Alle 7 Downloads</h3>
@@ -656,9 +695,9 @@
           </div>
         </div>
 
-        <div class="product bundle-highlight reveal">
+        <div class="product bundle-purple reveal">
           <div class="product-top">
-            <span class="badge" style="background:rgba(122,158,126,.18)">Click & Mix</span>
+            <span class="badge">Click & Mix</span>
           </div>
           <h3>Eigenes Paket zusammenstellen</h3>
           <div class="meta">Ab 3 Produkten sparst du 15 %. Schreib mir einfach welche du willst.</div>
