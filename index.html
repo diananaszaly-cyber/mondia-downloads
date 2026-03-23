@@ -156,6 +156,7 @@
     }
     .btn.ghost{background:transparent; box-shadow:none}
     .btn.small{padding:9px 14px; border-radius:10px; font-size:12px}
+    .btn.disabled{opacity:.4; pointer-events:none; cursor:not-allowed}
 
     /* ── Hero ── */
     .hero{
@@ -247,6 +248,10 @@
     /* ── Product grid ── */
     .grid-3{
       display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    }
+    .grid-2{
+      display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
+      max-width:780px; margin-left:auto; margin-right:auto;
     }
 
     /* ── Product card with animated border ── */
@@ -514,7 +519,7 @@
       .stats{gap:32px}
     }
     @media(max-width:620px){
-      .grid-3{grid-template-columns:1fr}
+      .grid-3, .grid-2{grid-template-columns:1fr}
       .hero h1{font-size:32px}
       .stats{flex-direction:column; gap:20px}
       .hero{padding:120px 0 50px}
@@ -580,7 +585,7 @@
   <!-- ── Stats ── -->
   <div class="stats reveal">
     <div class="stat">
-      <div class="stat-num">7+</div>
+      <div class="stat-num">9+</div>
       <div class="stat-label">Downloads</div>
     </div>
     <div class="stat">
@@ -609,10 +614,9 @@
             <div class="price">9 €</div>
           </div>
           <h3>KI-Spickzettel</h3>
-          <div class="meta">In 20 Min KI meistern – 5 Prompt-Regeln + 10 Sofort-Prompts</div>
+          <div class="meta">In 20 Minuten sicherer mit KI arbeiten – 5 Prompt-Regeln, Prompt-Formel und 10 Sofort-Prompts für den direkten Einstieg.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/KI_Spickzettel_MONDIA_v2_preview.pdf','KI-Spickzettel')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/eoznwc" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
@@ -622,10 +626,9 @@
             <div class="price">19 €</div>
           </div>
           <h3>Prompt-Bibliothek</h3>
-          <div class="meta">100 universelle Prompts in 10 Kategorien – Copy & Paste</div>
+          <div class="meta">100 universelle Prompts für Arbeit, Content und Alltag – 10 Kategorien, Copy-&-Paste-Vorlagen und klarere Ergebnisse durch bessere Prompt-Struktur.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/Prompt_Bibliothek_MONDIA_v2_preview.pdf','Prompt-Bibliothek')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/txtdb" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
@@ -635,10 +638,9 @@
             <div class="price">14 €</div>
           </div>
           <h3>KI-Assistent für Lehrer</h3>
-          <div class="meta">30 Prompts + Custom GPT – Unterricht, Elternbriefe, Förderung</div>
+          <div class="meta">Unterricht, Elternkommunikation und Förderung einfacher vorbereiten – 30 Prompts plus Ideen für Planung, Differenzierung und alltagstaugliche KI-Unterstützung.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Lehrer_MONDIA_3_preview.pdf','KI-Assistent für Lehrer')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/bulbzb" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
@@ -648,10 +650,9 @@
             <div class="price">9 €</div>
           </div>
           <h3>KI-Assistent für Schüler</h3>
-          <div class="meta">Schlauer lernen – Quizfragen, Lernpläne, Prüfungsvorbereitung</div>
+          <div class="meta">Besser lernen mit klaren Aufgaben, Quizfragen und Lernplänen – einfacher Einstieg für Schule, Hausaufgaben und Prüfungsvorbereitung.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Schueler_MONDIA_preview.pdf','KI-Assistent für Schüler')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/vttrsg" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
@@ -661,10 +662,9 @@
             <div class="price">14 €</div>
           </div>
           <h3>KI-Assistent für Studierende</h3>
-          <div class="meta">Hausarbeiten, Literatur, Prüfungen – effektiver studieren mit KI</div>
+          <div class="meta">Hausarbeiten, Literatur und Prüfungen strukturierter angehen – praxisnahe KI-Hilfe für Studium, Recherche und wissenschaftliches Arbeiten.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Studierende_MONDIA_preview.pdf','KI-Assistent für Studierende')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/tfmqm" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
@@ -674,23 +674,45 @@
             <div class="price">24 €</div>
           </div>
           <h3>KI-Werkzeugkasten für Selbstständige</h3>
-          <div class="meta">30 Prompts + 5 Workflows – Angebote, Kunden, Content, Orga</div>
+          <div class="meta">Mehr Klarheit für Angebote, Kundenkommunikation, Content und Organisation – 30 Prompts plus 5 Workflows für den direkten Einsatz im Business-Alltag.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/KI_Werkzeugkasten_Selbststaendige_MONDIA_preview.pdf','KI-Werkzeugkasten für Selbstständige')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/djtap" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
         <div class="product accent-teal reveal">
           <div class="product-top">
             <span class="badge">PDF · 3 Seiten · Content</span>
-            <div class="price">14 €</div>
+            <div class="price">19 €</div>
           </div>
           <h3>KI-Assistent für Social Media</h3>
-          <div class="meta">20 Prompts für Instagram, TikTok, LinkedIn, Facebook & X</div>
+          <div class="meta">Content schneller planen, schreiben und an Plattformen anpassen – Prompts für Instagram, TikTok, LinkedIn, Facebook und X, direkt nutzbar.</div>
           <div class="product-bottom">
-            <button class="btn small ghost" onclick="openPreview('products/KI-Assistent_fuer_Social_Media_MONDIA_1_preview.pdf','KI-Assistent für Social Media')">Vorschau</button>
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/dzbzle" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
+          </div>
+        </div>
+
+        <div class="product accent-blue reveal">
+          <div class="product-top">
+            <span class="badge">PDF · Lernplan · Neu</span>
+            <div class="price">19 €</div>
+          </div>
+          <h3>KI in 14 Tagen – Lernplan</h3>
+          <div class="meta">Tägliche Mini-Aufgaben für einen klaren, praxisnahen Einstieg – Schritt für Schritt lernen, anwenden und erste sichere KI-Routinen aufbauen.</div>
+          <div class="product-bottom">
+            <span class="btn small primary disabled">Bald verfügbar</span>
+          </div>
+        </div>
+
+        <div class="product accent-green reveal">
+          <div class="product-top">
+            <span class="badge">PDF · Guide · Neu</span>
+            <div class="price">19 €</div>
+          </div>
+          <h3>KI für Einsteiger – Guide</h3>
+          <div class="meta">Klarer Einstieg mit Praxis, Prompts und einfachen Beispielen – verstehe KI schneller und nutze sie direkt für Alltag, Lernen und Arbeit.</div>
+          <div class="product-bottom">
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
       </div>
@@ -699,36 +721,36 @@
       <div class="grid-3" style="margin-top:20px">
         <div class="product bundle-green reveal">
           <div class="product-top">
-            <span class="badge">3er-Pack</span>
-            <div class="price">29 €</div>
+            <span class="badge">3 nach Wahl</span>
+            <div class="price">39 €</div>
           </div>
           <h3>3 Downloads nach Wahl</h3>
-          <div class="meta">Wähle 3 beliebige Produkte aus und spare. <span style="text-decoration:line-through; opacity:.5">ab 37 €</span></div>
+          <div class="meta">Wähle 3 beliebige Downloads und spare gegenüber dem Einzelkauf.</div>
           <div class="product-bottom">
-            <a class="btn small primary" href="mailto:diana.naszaly@outlook.com?subject=3er-Pack%20Bestellung&body=Hallo%20Diana,%0A%0Aich%20m%C3%B6chte%20das%203er-Pack%20bestellen.%0AMeine%20Auswahl:%0A1.%20%0A2.%20%0A3.%20%0A%0AVielen%20Dank!" target="_blank">Auswahl per E-Mail</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
         <div class="product bundle-gold reveal">
           <div class="product-top">
             <span class="badge">Komplett-Paket</span>
-            <div class="price">69 €</div>
+            <div class="price">79 €</div>
           </div>
           <h3>Alle 7 Downloads</h3>
-          <div class="meta">Das volle Programm – alle Produkte zum Sparpreis. <span style="text-decoration:line-through; opacity:.5">103 €</span></div>
+          <div class="meta">Das komplette Download-Paket für alle, die direkt alles auf einmal nutzen möchten.</div>
           <div class="product-bottom">
-            <a class="btn small primary" href="https://dianawaves04.gumroad.com/l/gteat" target="_blank">Kaufen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
 
         <div class="product bundle-purple reveal">
           <div class="product-top">
-            <span class="badge">Click & Mix</span>
+            <span class="badge">Eigenes Paket</span>
           </div>
           <h3>Eigenes Paket zusammenstellen</h3>
-          <div class="meta">Ab 3 Produkten sparst du 15 %. Schreib mir einfach welche du willst.</div>
+          <div class="meta">Du willst eine eigene Kombination? Schreib mir einfach, welche Produkte du möchtest.</div>
           <div class="product-bottom">
-            <a class="btn small primary" href="mailto:diana.naszaly@outlook.com?subject=Click%20%26%20Mix%20Bestellung&body=Hallo%20Diana,%0A%0Aich%20m%C3%B6chte%20folgende%20Produkte%20bestellen:%0A-%20%0A-%20%0A-%20%0A%0AVielen%20Dank!" target="_blank">Per E-Mail anfragen</a>
+            <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
       </div>
@@ -748,22 +770,22 @@
         <div class="card setup-card reveal">
           <div class="setup-price">79 €</div>
           <h3>Mini-Audit</h3>
-          <p>Asynchron: Du schickst Material, bekommst eine Datei + Prompts + 10-Min Video.</p>
+          <p><strong>Dein schneller Einstieg ohne Live-Termin</strong><br>Du schickst dein Material und bekommst eine klare Datei, passende Prompts und ein kurzes Erklärvideo.</p>
         </div>
         <div class="card setup-card reveal">
           <div class="setup-price">199 €</div>
           <h3>KI-Setup Standard</h3>
-          <p>90–120 Min live. Prompt-Bibliothek + Ordnerstruktur + 3 Vorlagen + Mini-Guide.</p>
+          <p><strong>Strukturiertes Setup für deinen konkreten Anwendungsfall</strong><br>90–120 Minuten live mit Prompt-Bibliothek, Ordnerstruktur, 3 Vorlagen und Mini-Guide.</p>
         </div>
         <div class="card setup-card reveal">
           <div class="setup-price">299 €</div>
           <h3>KI-Setup Pro</h3>
-          <p>2–3 Std live. Standard + Workflow-Sheet + Extra Use-Case.</p>
+          <p><strong>Mehr Tiefe, mehr Struktur, mehr Umsetzung</strong><br>2–3 Stunden live inklusive Standard-Paket, Workflow-Sheet und zusätzlichem Use Case.</p>
         </div>
       </div>
 
       <div class="card reveal" style="margin-top:16px; text-align:center">
-        <p><strong>Optionaler Support:</strong> 30-Min Check-in <strong>39 €</strong> · Support-Woche (1 h) <strong>49 €</strong></p>
+        <p><strong>Optionaler Support:</strong> 30-Min Check-in <strong>39 €</strong> · Support-Woche <strong>49 €</strong></p>
       </div>
     </div>
   </section>
