@@ -158,6 +158,39 @@
     .btn.small{padding:9px 14px; border-radius:10px; font-size:12px}
     .btn.disabled{opacity:.4; pointer-events:none; cursor:not-allowed}
 
+    /* ── Bundle checkbox ── */
+    .product-check{
+      position:absolute; top:14px; right:14px; z-index:5;
+      display:flex; align-items:center; gap:6px;
+      cursor:pointer; user-select:none;
+    }
+    .product-check input{display:none}
+    .product-check .checkmark{
+      width:22px; height:22px; border-radius:7px;
+      border:2px solid rgba(122,158,126,.25);
+      background:rgba(122,158,126,.06);
+      display:flex; align-items:center; justify-content:center;
+      transition:all .2s ease;
+      font-size:13px; color:transparent;
+    }
+    .product-check input:checked + .checkmark{
+      border-color:#5CFFA6;
+      background:rgba(92,255,166,.15);
+      color:#5CFFA6;
+    }
+    .product-check .checkmark:hover{
+      border-color:rgba(122,158,126,.45);
+      background:rgba(122,158,126,.12);
+    }
+    .product.selected{
+      border-color:rgba(92,255,166,.35) !important;
+      box-shadow:0 0 20px rgba(92,255,166,.08);
+    }
+    .bundle-hint{
+      font-size:11px; color:var(--muted2);
+      text-align:center; margin-top:8px;
+    }
+
     /* ── Hero ── */
     .hero{
       padding:140px 0 80px;
@@ -638,7 +671,8 @@
       <!-- Kategorie: Einstieg -->
       <h3 class="category-title reveal" style="color:var(--sage-light); font-size:18px; margin:40px 0 16px; letter-spacing:.5px">Einstieg</h3>
       <div class="grid-3">
-        <div class="product accent-green reveal">
+        <div class="product accent-green reveal" data-product="KI-Spickzettel (9 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 2 Seiten · Starter</span>
             <div class="price">9 €</div>
@@ -651,7 +685,8 @@
           </div>
         </div>
 
-        <div class="product accent-green reveal">
+        <div class="product accent-green reveal" data-product="KI für Einsteiger – Guide (19 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 8 Seiten · Guide · Neu</span>
             <div class="price">19 €</div>
@@ -664,7 +699,8 @@
           </div>
         </div>
 
-        <div class="product accent-green reveal">
+        <div class="product accent-green reveal" data-product="KI in 14 Tagen – Lernplan (19 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 18 Seiten · Lernplan · Neu</span>
             <div class="price">19 €</div>
@@ -681,7 +717,8 @@
       <!-- Kategorie: Bildung -->
       <h3 class="category-title reveal" style="color:var(--sage-light); font-size:18px; margin:40px 0 16px; letter-spacing:.5px">Bildung</h3>
       <div class="grid-3">
-        <div class="product accent-warm reveal">
+        <div class="product accent-warm reveal" data-product="KI-Assistent für Schüler (9 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 4 Seiten · Bildung</span>
             <div class="price">9 €</div>
@@ -694,7 +731,8 @@
           </div>
         </div>
 
-        <div class="product accent-warm reveal">
+        <div class="product accent-warm reveal" data-product="KI-Assistent für Studierende (14 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 5 Seiten · Bildung</span>
             <div class="price">14 €</div>
@@ -707,7 +745,8 @@
           </div>
         </div>
 
-        <div class="product accent-warm reveal">
+        <div class="product accent-warm reveal" data-product="KI-Assistent für Lehrer (14 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 6 Seiten · Bildung</span>
             <div class="price">14 €</div>
@@ -724,7 +763,8 @@
       <!-- Kategorie: Business & Content -->
       <h3 class="category-title reveal" style="color:var(--sage-light); font-size:18px; margin:40px 0 16px; letter-spacing:.5px">Business & Content</h3>
       <div class="grid-3">
-        <div class="product accent-blue reveal">
+        <div class="product accent-blue reveal" data-product="Prompt-Bibliothek (19 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 7 Seiten · Bestseller</span>
             <div class="price">19 €</div>
@@ -737,7 +777,8 @@
           </div>
         </div>
 
-        <div class="product accent-teal reveal">
+        <div class="product accent-teal reveal" data-product="KI-Assistent für Social Media (19 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 8 Seiten · Content</span>
             <div class="price">19 €</div>
@@ -750,7 +791,8 @@
           </div>
         </div>
 
-        <div class="product accent-purple reveal">
+        <div class="product accent-purple reveal" data-product="KI-Werkzeugkasten für Selbstständige (24 €)">
+          <label class="product-check"><input type="checkbox" onchange="updateBundle(this)"><span class="checkmark">✓</span></label>
           <div class="product-top">
             <span class="badge">PDF · 12 Seiten · Business</span>
             <div class="price">24 €</div>
@@ -766,15 +808,16 @@
 
       <!-- Bundles -->
       <div class="grid-3" style="margin-top:20px">
-        <div class="product bundle-green reveal">
+        <div class="product bundle-green reveal" id="bundle3">
           <div class="product-top">
             <span class="badge">3 nach Wahl</span>
             <div class="price">39 €</div>
           </div>
           <h3>3 Downloads nach Wahl</h3>
-          <div class="meta">Wähle 3 beliebige Downloads und spare gegenüber dem Einzelkauf.</div>
+          <div class="meta">Wähle oben 3 beliebige Downloads per Checkbox aus und spare gegenüber dem Einzelkauf.</div>
+          <div class="bundle-hint" id="bundleHint">0 von 3 gewählt</div>
           <div class="product-bottom">
-            <span class="btn small primary disabled">Bald verfügbar</span>
+            <span class="btn small primary disabled" id="bundleBtn">Wähle 3 Produkte</span>
           </div>
         </div>
 
@@ -797,7 +840,7 @@
           <h3>Eigenes Paket zusammenstellen</h3>
           <div class="meta">Du willst eine eigene Kombination? Schreib mir einfach, welche Produkte du möchtest.</div>
           <div class="product-bottom">
-            <span class="btn small primary disabled">Bald verfügbar</span>
+            <a href="mailto:diana.naszaly@outlook.com?subject=Eigenes%20Paket%20%E2%80%93%20Peakfiles&body=Hallo%20Diana%2C%0A%0Aich%20m%C3%B6chte%20gerne%20ein%20eigenes%20Paket%20zusammenstellen.%0A%0AMeine%20Wunsch-Produkte%3A%0A-%20%0A-%20%0A%0AVielen%20Dank!" class="btn small primary">Anfrage senden</a>
           </div>
         </div>
       </div>
@@ -933,6 +976,40 @@
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 'p') { e.preventDefault(); }
     });
+
+    /* ── 3 nach Wahl – Checkbox-Bundle ── */
+    function updateBundle(cb) {
+      var checks = document.querySelectorAll('.product-check input');
+      var selected = [];
+      checks.forEach(function(c) {
+        var card = c.closest('.product');
+        if (c.checked) {
+          selected.push(card.dataset.product);
+          card.classList.add('selected');
+        } else {
+          card.classList.remove('selected');
+        }
+      });
+      // Max 3
+      if (selected.length > 3) {
+        cb.checked = false;
+        cb.closest('.product').classList.remove('selected');
+        selected = selected.filter(function(p) { return p !== cb.closest('.product').dataset.product; });
+      }
+      // Update hint & button
+      var hint = document.getElementById('bundleHint');
+      var btn = document.getElementById('bundleBtn');
+      hint.textContent = selected.length + ' von 3 gewählt';
+      if (selected.length === 3) {
+        var subject = encodeURIComponent('3 nach Wahl – Peakfiles (39 €)');
+        var body = encodeURIComponent('Hallo Diana,\n\nich möchte das "3 nach Wahl"-Paket für 39 € bestellen.\n\nMeine 3 gewählten Produkte:\n1. ' + selected[0] + '\n2. ' + selected[1] + '\n3. ' + selected[2] + '\n\nBitte sende mir den Zahlungslink.\n\nVielen Dank!');
+        btn.outerHTML = '<a href="mailto:diana.naszaly@outlook.com?subject=' + subject + '&body=' + body + '" class="btn small primary" id="bundleBtn">Jetzt anfragen</a>';
+      } else {
+        if (btn.tagName === 'A') {
+          btn.outerHTML = '<span class="btn small primary disabled" id="bundleBtn">Wähle 3 Produkte</span>';
+        }
+      }
+    }
 
     /* ── Nav shrink on scroll ── */
     const nav = document.querySelector('.nav-inner');
