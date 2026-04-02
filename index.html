@@ -511,6 +511,34 @@
     }
     .pdf-modal-close:hover{background:rgba(122,158,126,.18)}
     .pdf-modal iframe{flex:1; width:100%; border:none}
+    .pdf-modal-box{position:relative}
+    .pdf-watermark{
+      position:absolute; inset:60px 0 0 0; z-index:10;
+      display:flex; align-items:center; justify-content:center;
+      pointer-events:none;
+      font-size:28px; font-weight:700; letter-spacing:4px;
+      color:rgba(80,80,80,.35);
+      transform:rotate(-25deg);
+      text-transform:uppercase;
+      user-select:none;
+    }
+    .pdf-blur-overlay{
+      position:absolute; bottom:0; left:0; right:0; height:65%; z-index:11;
+      background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 25%, rgba(255,255,255,.97) 50%);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      pointer-events:none;
+      padding-top:80px;
+    }
+    .pdf-blur-overlay span{
+      font-size:20px; font-weight:700; color:#1a1a1a; letter-spacing:.5px;
+    }
+    .pdf-blur-overlay small{
+      font-size:13px; color:#555; margin-top:6px;
+    }
+    @media print{
+      body *{display:none !important}
+      body::after{content:"Drucken ist deaktiviert."; display:block; font-size:24px; padding:40px; color:#333}
+    }
 
     /* ── Responsive ── */
     @media(max-width:960px){
@@ -618,6 +646,7 @@
           <h3>KI-Spickzettel</h3>
           <div class="meta">In 20 Minuten sicherer mit KI arbeiten – 5 Prompt-Regeln, Prompt-Formel und 10 Sofort-Prompts für den direkten Einstieg.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/KI_Spickzettel_MONDIA_v2_preview.pdf','KI-Spickzettel')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -658,6 +687,7 @@
           <h3>KI-Assistent für Schüler</h3>
           <div class="meta">Besser lernen mit klaren Aufgaben, Quizfragen und Lernplänen – einfacher Einstieg für Schule, Hausaufgaben und Prüfungsvorbereitung.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Schueler_MONDIA_preview.pdf','KI-Assistent für Schüler')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -670,6 +700,7 @@
           <h3>KI-Assistent für Studierende</h3>
           <div class="meta">Hausarbeiten, Literatur und Prüfungen strukturierter angehen – praxisnahe KI-Hilfe für Studium, Recherche und wissenschaftliches Arbeiten.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Studierende_MONDIA_preview.pdf','KI-Assistent für Studierende')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -682,6 +713,7 @@
           <h3>KI-Assistent für Lehrer</h3>
           <div class="meta">Unterricht, Elternkommunikation und Förderung einfacher vorbereiten – 30 Prompts plus Ideen für Planung, Differenzierung und alltagstaugliche KI-Unterstützung.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/KI_Assistent_Lehrer_MONDIA_3_preview.pdf','KI-Assistent für Lehrer')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -698,6 +730,7 @@
           <h3>Prompt-Bibliothek</h3>
           <div class="meta">100 universelle Prompts für Arbeit, Content und Alltag – 10 Kategorien, Copy-&-Paste-Vorlagen und klarere Ergebnisse durch bessere Prompt-Struktur.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/Prompt_Bibliothek_MONDIA_v2_preview.pdf','Prompt-Bibliothek')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -710,6 +743,7 @@
           <h3>KI-Assistent für Social Media</h3>
           <div class="meta">Content schneller planen, schreiben und an Plattformen anpassen – Prompts für Instagram, TikTok, LinkedIn, Facebook und X, direkt nutzbar.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/KI-Assistent_fuer_Social_Media_MONDIA_1_preview.pdf','KI-Assistent für Social Media')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -722,6 +756,7 @@
           <h3>KI-Werkzeugkasten für Selbstständige</h3>
           <div class="meta">Mehr Klarheit für Angebote, Kundenkommunikation, Content und Organisation – 30 Prompts plus 5 Workflows für den direkten Einsatz im Business-Alltag.</div>
           <div class="product-bottom">
+            <button class="btn small ghost" onclick="openPreview('products/KI_Werkzeugkasten_Selbststaendige_MONDIA_preview.pdf','KI-Werkzeugkasten für Selbstständige')">Vorschau</button>
             <span class="btn small primary disabled">Bald verfügbar</span>
           </div>
         </div>
@@ -838,6 +873,11 @@
         <div class="pdf-modal-close" onclick="closePreview()">&#x2715;</div>
       </div>
       <iframe id="pdfModalFrame" src="" title="PDF Vorschau"></iframe>
+      <div class="pdf-watermark">Vorschau – peakfiles.de</div>
+      <div class="pdf-blur-overlay">
+        <span>Vollversion freischalten</span>
+        <small>Nur die Vorschau – der vollständige Inhalt ist im Download enthalten.</small>
+      </div>
     </div>
   </div>
 
@@ -871,7 +911,7 @@
 
     /* ── PDF Modal ── */
     function openPreview(src, title) {
-      document.getElementById('pdfModalFrame').src = src;
+      document.getElementById('pdfModalFrame').src = src + '#toolbar=0&navpanes=0';
       document.getElementById('pdfModalTitle').textContent = title + ' – Vorschau';
       document.getElementById('pdfModal').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -884,6 +924,12 @@
     }
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closePreview();
+    });
+
+    /* ── Rechtsklick + Drucken blockieren im Modal ── */
+    document.getElementById('pdfModal').addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'p') { e.preventDefault(); }
     });
 
     /* ── Nav shrink on scroll ── */
