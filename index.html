@@ -441,21 +441,59 @@
     .card h3{font-size:16px; font-weight:700; margin-bottom:8px}
     .card p{color:var(--muted); font-size:14px; line-height:1.6}
 
-    /* ── Setup cards with icon ── */
-    .setup-card{position:relative; overflow:hidden}
+    /* ── Setup cards ── */
+    .setup-card{position:relative; overflow:hidden; display:flex; flex-direction:column}
     .setup-card .setup-price{
-      font-size:28px; font-weight:800;
+      font-size:32px; font-weight:800;
       color:var(--sage-light);
       margin-bottom:4px;
       letter-spacing:-.02em;
     }
-    .setup-card h3{color:var(--text)}
+    .setup-card h3{color:var(--text); font-size:18px; margin-bottom:8px}
+    .setup-card .setup-desc{
+      color:var(--muted); font-size:14px; line-height:1.6; margin-bottom:16px;
+    }
+    .setup-card .setup-btn-top{margin-bottom:20px}
+    .setup-card .setup-features{
+      list-style:none; padding:0; margin:0 0 20px;
+      display:flex; flex-direction:column; gap:10px; flex:1;
+    }
+    .setup-card .setup-features li{
+      display:flex; align-items:flex-start; gap:8px;
+      font-size:13px; color:var(--muted); line-height:1.4;
+    }
+    .setup-card .setup-features li::before{
+      content:"✓"; color:var(--sage-light); font-weight:700;
+      flex-shrink:0; margin-top:1px;
+    }
+    .setup-card .setup-btn-bottom{
+      padding-top:16px;
+      border-top:1px solid rgba(122,158,126,.08);
+      margin-top:auto;
+    }
     .setup-card::after{
       content:"";
       position:absolute; top:-30px; right:-30px;
       width:100px; height:100px; border-radius:50%;
       background:rgba(122,158,126,.06);
       pointer-events:none;
+    }
+    .setup-popular{
+      position:absolute; top:14px; right:14px;
+      font-size:11px; font-weight:700;
+      padding:4px 12px; border-radius:8px;
+      background:rgba(122,158,126,.15);
+      color:var(--sage-light);
+      letter-spacing:.03em;
+    }
+    .btn.outline{
+      background:transparent;
+      border:1px solid rgba(122,158,126,.25);
+      color:var(--sage-light);
+    }
+    .btn.outline:hover{
+      background:rgba(122,158,126,.08);
+      border-color:rgba(122,158,126,.40);
     }
 
     /* ── FAQ ── */
@@ -858,24 +896,58 @@
 
       <div class="grid-3">
         <div class="card setup-card reveal">
-          <div class="setup-price">79 €</div>
+          <div class="setup-price">49 €</div>
           <h3>Mini-Audit</h3>
-          <p><strong>Dein schneller Einstieg ohne Live-Termin</strong><br>Du schickst dein Material und bekommst eine klare Datei, passende Prompts und ein kurzes Erklärvideo.</p>
+          <p class="setup-desc"><strong>Dein schneller Einstieg ohne Live-Termin</strong><br>Du schickst dein Material und bekommst eine klare Datei, passende Prompts und ein kurzes Erklärvideo.</p>
+          <ul class="setup-features">
+            <li>Priorisierter Aktionsplan</li>
+            <li>Erklärvideo (5–10 Min.)</li>
+            <li>Übergabe-PDF</li>
+            <li>Lieferzeit: 48 Stunden</li>
+          </ul>
+          <div class="setup-btn-bottom">
+            <a href="mailto:diana.naszaly@outlook.com?subject=Mini-Audit%20%E2%80%93%20Peakfiles%20(79%20%E2%82%AC)&body=Hallo%20Diana%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Mini-Audit%20(49%20%E2%82%AC).%0A%0AViele%20Gr%C3%BC%C3%9Fe" class="btn primary" style="width:100%">Jetzt anfragen</a>
+          </div>
         </div>
-        <div class="card setup-card reveal">
-          <div class="setup-price">199 €</div>
+
+        <div class="card setup-card reveal" style="border-color:rgba(122,158,126,.30)">
+          <span class="setup-popular">Beliebt</span>
+          <div class="setup-price">149 €</div>
           <h3>KI-Setup Standard</h3>
-          <p><strong>Strukturiertes Setup für deinen konkreten Anwendungsfall</strong><br>90–120 Minuten live mit Prompt-Bibliothek, Ordnerstruktur, 3 Vorlagen und Mini-Guide.</p>
+          <p class="setup-desc"><strong>Strukturiertes Setup für deinen konkreten Anwendungsfall</strong><br>90–120 Minuten live mit Prompt-Bibliothek, Ordnerstruktur, 3 Vorlagen und Mini-Guide.</p>
+          <ul class="setup-features">
+            <li>Persönliche Ordnerstruktur</li>
+            <li>3 fertige Vorlagen</li>
+            <li>Mini-Guide PDF</li>
+            <li>90–120 Min. Live-Session</li>
+          </ul>
+          <div class="setup-btn-bottom">
+            <a href="mailto:diana.naszaly@outlook.com?subject=KI-Setup%20Standard%20%E2%80%93%20Peakfiles%20(199%20%E2%82%AC)&body=Hallo%20Diana%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20KI-Setup%20Standard%20(149%20%E2%82%AC).%0A%0AViele%20Gr%C3%BC%C3%9Fe" class="btn primary" style="width:100%">Jetzt anfragen</a>
+          </div>
         </div>
+
         <div class="card setup-card reveal">
-          <div class="setup-price">299 €</div>
+          <div class="setup-price">249 €</div>
           <h3>KI-Setup Pro</h3>
-          <p><strong>Mehr Tiefe, mehr Struktur, mehr Umsetzung</strong><br>2–3 Stunden live inklusive Standard-Paket, Workflow-Sheet und zusätzlichem Use Case.</p>
+          <p class="setup-desc"><strong>Mehr Tiefe, mehr Struktur, mehr Umsetzung</strong><br>2–3 Stunden live inklusive Standard-Paket, Workflow-Sheet und zusätzlichem Use Case.</p>
+          <ul class="setup-features">
+            <li>Workflow-Sheet</li>
+            <li>5+ fertige Vorlagen</li>
+            <li>Mini-Guide PDF</li>
+            <li>2–3 Std. Live-Session</li>
+          </ul>
+          <div class="setup-btn-bottom">
+            <a href="mailto:diana.naszaly@outlook.com?subject=KI-Setup%20Pro%20%E2%80%93%20Peakfiles%20(299%20%E2%82%AC)&body=Hallo%20Diana%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20KI-Setup%20Pro%20(249%20%E2%82%AC).%0A%0AViele%20Gr%C3%BC%C3%9Fe" class="btn primary" style="width:100%">Jetzt anfragen</a>
+          </div>
         </div>
       </div>
 
       <div class="card reveal" style="margin-top:16px; text-align:center">
-        <p><strong>Optionaler Support:</strong> 30-Min Check-in <strong>39 €</strong> · Support-Woche <strong>49 €</strong></p>
+        <p><strong>Optionaler Support:</strong>
+          <a href="mailto:diana.naszaly@outlook.com?subject=Einzel-Call%20%E2%80%93%20Peakfiles%20(29%20%E2%82%AC)&body=Hallo%20Diana%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20den%20Einzel-Call%20(29%20%E2%82%AC).%0A%0AViele%20Gr%C3%BC%C3%9Fe" style="color:var(--sage-light); text-decoration:underline; text-underline-offset:3px">Einzel-Call <strong>29 €</strong></a>
+          ·
+          <a href="mailto:diana.naszaly@outlook.com?subject=Wochen-Begleitung%20%E2%80%93%20Peakfiles%20(59%20%E2%82%AC)&body=Hallo%20Diana%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Wochen-Begleitung%20(59%20%E2%82%AC).%0A%0AViele%20Gr%C3%BC%C3%9Fe" style="color:var(--sage-light); text-decoration:underline; text-underline-offset:3px">Wochen-Begleitung <strong>59 €</strong></a>
+        </p>
       </div>
     </div>
   </section>
